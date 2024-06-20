@@ -1,4 +1,4 @@
-let Engine = Matter.Engine,
+const Engine = Matter.Engine,
     Render = Matter.Render,
     Runner = Matter.Runner,
     Bodies = Matter.Bodies,
@@ -19,6 +19,31 @@ const render = Render.create({
 
     }
 });
+
+
+const world = engine.world;
+
+const leftWall = Bodies.rectangle(15, 395, 30, 790, {
+    isStatic : true, //고정기능
+    render : {fillStyle : "#E6B143"} // 
+})
+
+const rightWall = Bodies.rectangle(605, 395, 30, 790, {
+    isStatic : true, //고정기능
+    render : {fillStyle : "#E6B143"} // 
+})
+
+const ground = Bodies.rectangle(310, 820, 620, 60,{
+    isStatic : true,
+    render : {fillStyle: '#E6B143'}
+})
+
+const endLine = Bodies.rectangle(310, 150, 620, 2, {
+    isStatic : true, //고정기능
+    render : {fillStyle : "#E6B143"} // 
+})
+
+World.add(world, [leftWall, rightWall, ground, endLine])
 
 Render.run(render);
 Runner.run(engine)
