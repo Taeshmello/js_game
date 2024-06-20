@@ -13,12 +13,12 @@ const render = Render.create({
     element: document.body,
     options: {
         wireframes : false,
-        background: '#F74C8', // 배경
+        background: '#F7F4C8', // 배경
         width: 620,
-        height: 890,
+        height: 850,
 
     }
 });
 
-Render.run(engine);
-Runner.run(render)
+Render.run(render);
+Runner.run(engine)
