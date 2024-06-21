@@ -1,10 +1,12 @@
 import { FRUITS } from "./fruits.js";
+import { Matter } from "./matter.js";
 
 const Engine = Matter.Engine,
     Render = Matter.Render,
     Runner = Matter.Runner,
     Bodies = Matter.Bodies,
-    World = Matter.World;
+    World = Matter.World,
+    Body = Matter.body;
 
 //엔진 선언
 const engine = Engine.create();
@@ -58,6 +60,9 @@ Runner.run(engine);
 let currentBody;
 let currentFruit;
 
+//키 조작 제어 변수
+let disableAction = false;
+
 
 // 과일 떨어지는 함수
 
@@ -74,7 +79,7 @@ const addFruit = () => {
         render: {
             sprite: {texture : `${fruits.name}.png`},
         },
-    restitution : 0.5,
+    restitution : 0.2,
     });
 
     //현재 과일값 저장
@@ -83,6 +88,41 @@ const addFruit = () => {
 
     World.add(world, body)
 
-}
+   
+    }
+
+    window.onkeydown = (event) => {
+
+        //제어 조작 변수가 true 일 경우 바로 리턴
+        if(disableAction){
+            return;
+        }
+
+        switch(event.code) {
+            case "KeyA":
+                Body.setPosition(currentBody, {
+                    x: currentBody.position.x - 10,
+                    y: currentBody.position.y
+                })
+                break;
+            case "KeyD":
+                Body.setPosition(currentBody,{
+                    x: currentBody.position.x + 10,
+                    y: currentBody.position.y
+                })
+                break;
+            case "KeyS":
+                currentBody.isSleeping = false;
+                disableAction = true;
+
+                setTimeout(()=>{
+                    addFruit();
+                    disableAction = false;
+                }, 1000);
+                break;
+        }
+    }
+
+
 
 addFruit();
