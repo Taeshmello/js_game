@@ -1,3 +1,5 @@
+import { FRUITS } from "./fruits.js";
+
 const Engine = Matter.Engine,
     Render = Matter.Render,
     Runner = Matter.Runner,
@@ -46,4 +48,26 @@ const endLine = Bodies.rectangle(310, 150, 620, 2, {
 World.add(world, [leftWall, rightWall, ground, endLine])
 
 Render.run(render);
-Runner.run(engine)
+Runner.run(engine);
+
+
+// 과일 떨어지는 함수
+
+const addFruit = () => {
+
+    // 과일 배열 저장
+    const index = 0;
+
+    const fruits = FRUITS[index];
+
+    const body = Bodies.circle(300, 50, fruits.radius, {
+        render: {
+            sprite: {texture : `${fruits.name}.png`},
+        }
+    });
+
+    World.add(world, body)
+
+}
+
+addFruit();
