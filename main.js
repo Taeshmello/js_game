@@ -6,7 +6,7 @@ const Engine = Matter.Engine,
     Runner = Matter.Runner,
     Bodies = Matter.Bodies,
     World = Matter.World,
-    Body = Matter.body;
+    Body = Matter.Body;
 
 //엔진 선언
 const engine = Engine.create();
