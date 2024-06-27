@@ -44,6 +44,7 @@ const ground = Bodies.rectangle(310, 820, 620, 60,{
 })
 
 const endLine = Bodies.rectangle(310, 150, 620, 2, {
+    name : "endLine",
     isStatic : true, //고정기능
     isSensor : true, // 충돌은 감지하나 물리엔진은 적용 안 함
     render : {fillStyle : "#E6B143"}
@@ -161,6 +162,11 @@ const addFruit = () => {
                 World.add(world, newBody);
             }
         });
+
+        if(!disableAction && (collision.bodyA.name == "endLine" || collision.bodyB.name === "endLine")){
+            alert("Game Over");
+            disableAction = true;
+        }
     })
 
 addFruit();
