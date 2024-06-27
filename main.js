@@ -108,7 +108,7 @@ const addFruit = () => {
                 })
                 break;
             case "KeyD":
-                if(currentBody.position.x - currentFruit.radius < 570)
+                if(currentBody.position.x + currentFruit.radius < 570)
                 Body.setPosition(currentBody,{
                     x: currentBody.position.x + 10,
                     y: currentBody.position.y
