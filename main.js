@@ -161,12 +161,13 @@ const addFruit = () => {
 
                 World.add(world, newBody);
             }
-        });
-
-        if(!disableAction && (collision.bodyA.name == "endLine" || collision.bodyB.name === "endLine")){
+            if(!disableAction && (collision.bodyA.name == "endLine" || collision.bodyB.name === "endLine")){
             alert("Game Over");
             disableAction = true;
         }
+        });
+
+        
     })
 
 addFruit();
